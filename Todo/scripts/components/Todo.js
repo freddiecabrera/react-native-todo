@@ -24,10 +24,33 @@ export class Todo extends Component {
   }
 
   handlePress () {
-    const todos = [...this.state.todos, this.state.newTodo]
-    this.setState({
-      todos,
-      newTodo: ''
+    fetch('http://localhost:3000/todos', {
+      method: 'post',
+      body: JSON.stringify({
+        name: this.state.newTodo
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      const todos = [...this.state.todos, data]
+      this.setState({ todos, newTodo: ''})
+    })
+  }
+
+  componentWillMount () {
+    fetch('http://localhost:3000/todos', {
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        todos: data
+      })
     })
   }
 
@@ -48,7 +71,7 @@ export class Todo extends Component {
         <View>
         <Text style={styles.todoList}>Todo List</Text>
         {this.state.todos.map((todo, index) => (
-          <Text style={{color: '#CCDAE9', marginTop: 5, marginLeft: 10}} key={index}>{index + 1}: {todo}</Text>
+          <Text style={{color: '#CCDAE9', marginTop: 5, marginLeft: 10}} key={index}>{index + 1}: {todo.name}</Text>
         ))}
         </View>
       </View>

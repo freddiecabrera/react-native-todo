@@ -11,7 +11,7 @@ import { Reddit } from './scripts/components/Reddit'
 import { AppRegistry, StyleSheet } from 'react-native'
 
 const Main = () => (
-  <Reddit />
+  <Todo />
 )
 
 const styles = StyleSheet.create({
