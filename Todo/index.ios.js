@@ -7,10 +7,11 @@
 import React, { Component } from 'react';
 import { Todo } from './scripts/components/Todo'
 import { Fancy } from './scripts/components/Fancy'
+import { Reddit } from './scripts/components/Reddit'
 import { AppRegistry, StyleSheet } from 'react-native'
 
 const Main = () => (
-  <Todo />
+  <Reddit />
 )
 
 const styles = StyleSheet.create({
