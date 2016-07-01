@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import { Todo } from './scripts/components/Todo'
+import { Fancy } from './scripts/components/Fancy'
 import { AppRegistry, StyleSheet } from 'react-native'
 
 const Main = () => (
